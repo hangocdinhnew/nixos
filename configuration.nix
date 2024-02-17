@@ -38,7 +38,8 @@
   # Enable the X11 windowing system.
   # services.xserver.enable = true;
 
-  virtualisation.vmware.guest.enable = true;
+  # For VMware Fusion
+  # virtualisation.vmware.guest.enable = true;
   
   # Enable some experimental spooky stuff.
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
