@@ -6,7 +6,8 @@
 
 {
   imports =
-    [ # Include the results of the hardware scan.
+    [
+      # Include the results of the hardware scan.
       ./hardware-configuration.nix
       inputs.home-manager.nixosModules.default
     ];
@@ -18,14 +19,14 @@
   networking.hostName = "hangocdinh-nixos"; # Define your hostname.
   # Pick only one of the below networking options.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-  networking.networkmanager.enable = true;  # Easiest to use and most distros use this by default.
+  networking.networkmanager.enable = true; # Easiest to use and most distros use this by default.
 
   # Set your time zone.
   time.timeZone = "Asia/Ho_Chi_Minh";
 
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
-  # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
+  # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domcin";
 
   # Select internationalisation properties.
   # i18n.defaultLocale = "en_US.UTF-8";
@@ -40,21 +41,21 @@
 
   # For VMware Fusion
   # virtualisation.vmware.guest.enable = true;
-  
+
   # Enable some experimental spooky stuff.
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
   # Fonts
   fonts.packages = with pkgs; [
-  	(nerdfonts.override { fonts = [ "Hack" ]; })
+    (nerdfonts.override { fonts = [ "Hack" ]; })
   ];
 
   # Home Manager
   home-manager = {
-	extraSpecialArgs = { inherit inputs; };
-	users = {
-		"hangocdinh" = import ./home.nix;
-	};
+    extraSpecialArgs = { inherit inputs; };
+    users = {
+      "hangocdinh" = import ./home.nix;
+    };
   };
 
   # Allow unfree software
@@ -71,12 +72,12 @@
   sound.enable = true;
   security.rtkit.enable = true;
   services.pipewire = {
-  	enable = true;
-  	alsa.enable = true;
-  	alsa.support32Bit = true;
-  	pulse.enable = true;
-  	# If you want to use JACK applications, uncomment this
-  	#jack.enable = true;
+    enable = true;
+    alsa.enable = true;
+    alsa.support32Bit = true;
+    pulse.enable = true;
+    # If you want to use JACK applications, uncomment this
+    #jack.enable = true;
   };
 
   # Enable touchpad support (enabled default in most desktopManager).
@@ -127,6 +128,7 @@
   # (/run/current-system/configuration.nix). This is useful in case you
   # accidentally delete configuration.nix.
   # system.copySystemConfiguration = true;
+  # This was commented out due to flakes aren't compatible with copySystemConfiguration.
 
   # This was added by user.
   # Hey uh, these options here was to automatically upgrade the system.
